@@ -15,8 +15,8 @@ namespace Conversion.Unit
         {
             this.emptyPrefix = emptyPrefix;
 
-            this.celsius = new UnitTypeName(UnitType.Temperature, "celsius", new ConvertRate(40, 1.0), (x) => { this.CelsiusValidation(x); });
-            this.fahrenheit = new UnitTypeName(UnitType.Temperature, "fahrenheit", new ConvertRate(40, 1.8), (x) => { this.FahrnheitValidatio(x); });
+            this.celsius = new UnitTypeName(UnitType.Temperature, "celsius", new ConvertRate(40, 1.0), this.CelsiusValidation);
+            this.fahrenheit = new UnitTypeName(UnitType.Temperature, "fahrenheit", new ConvertRate(40, 1.8), this.FahrnheitValidatio);
         }
 
         public List<FullUnit> GetFullUnits()
@@ -37,7 +37,7 @@ namespace Conversion.Unit
             }
         }
 
-        public void FahrnheitValidatio(double value)
+        private void FahrnheitValidatio(double value)
         {
             // lower then absolute zero
             if (value < -459.67)

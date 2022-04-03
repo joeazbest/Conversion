@@ -14,9 +14,9 @@ namespace Conversion.Unit
             this.siPrefixis = siPrefixis;
             this.unitTypes = new List<UnitTypeName>()
             {
-                new UnitTypeName(UnitType.Measure, "meter", new ConvertRate(0, 1), (x) => { this.Validation(x); }),
-                new UnitTypeName(UnitType.Measure, "feet", new ConvertRate(0, 1.0 / 0.3048), (x) => { this.Validation(x); }),
-                new UnitTypeName(UnitType.Measure, "inch", new ConvertRate(0, 1.0 / 0.0254), (x) => { this.Validation(x); })
+                new UnitTypeName(UnitType.Measure, "meter", new ConvertRate(0, 1), this.Validation),
+                new UnitTypeName(UnitType.Measure, "feet", new ConvertRate(0, 1.0 / 0.3048), this.Validation),
+                new UnitTypeName(UnitType.Measure, "inch", new ConvertRate(0, 1.0 / 0.0254), this.Validation)
             };
         }
 
@@ -34,7 +34,7 @@ namespace Conversion.Unit
             return output;
         }
 
-        public void Validation(double value)
+        private void Validation(double value)
         {
             if (value < 0)
             {

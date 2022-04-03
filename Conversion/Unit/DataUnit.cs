@@ -15,8 +15,8 @@ namespace Conversion.Unit
 
             this.unitTypes = new List<UnitTypeName>()
             {
-                new UnitTypeName(UnitType.Data, "bit", new ConvertRate(0, 1), (x) => {this.Validation(x); }),
-                new UnitTypeName(UnitType.Data, "bite", new ConvertRate(0, 0.125), (x) => {this.Validation(x); })
+                new UnitTypeName(UnitType.Data, "bit", new ConvertRate(0, 1), this.Validation),
+                new UnitTypeName(UnitType.Data, "bite", new ConvertRate(0, 0.125), this.Validation)
             };
         }
 
@@ -34,7 +34,7 @@ namespace Conversion.Unit
             return output;
         }
 
-        public void Validation(double value)
+        private void Validation(double value)
         {
             if (value < 0)
             {
